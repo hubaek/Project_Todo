@@ -24,4 +24,11 @@ public class CommentController {
         return commentService.getCommentsByTodoId(todoId);
     }
 
+    @PutMapping("/{commentId}")
+    public Long updateComment(@PathVariable Long commentId, @PathVariable Long todoId, @RequestBody CommentRequestDto commentRequestDto) {
+        return commentService.updateComment(todoId, commentId, commentRequestDto);
+    }
+
+
+
 }
