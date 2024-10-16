@@ -9,6 +9,8 @@ import com.nbcamp.todoList.domain.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentService {
@@ -25,7 +27,15 @@ public class CommentService {
         return new CommentResponseDto(comment);
     }
 
-    private Todo findTodo(Long todoId) {
+
+    public List<CommentResponseDto> getCommentsByTodoId(Long todoId) {
+        findTodo(todoId);
+        List<Comment> comments = commentRepository.findByTodoId(todoId);
+        return comments.stream()
+                .map(CommentResponseDto::new).toList();
+    }
+
+        private Todo findTodo(Long todoId) {
         return todoRepository.findById(todoId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 일정이 존재하지 않습니다."));
     }

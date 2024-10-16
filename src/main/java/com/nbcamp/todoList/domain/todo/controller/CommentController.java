@@ -6,6 +6,8 @@ import com.nbcamp.todoList.domain.todo.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/todos/{todoId}/comments")
@@ -16,4 +18,10 @@ public class CommentController {
     public CommentResponseDto createComment(@RequestBody CommentRequestDto commentRequestDto, @PathVariable Long todoId) {
         return commentService.createComment(commentRequestDto, todoId);
     }
+
+    @GetMapping
+    public List<CommentResponseDto> getCommentsByTodoId(@PathVariable Long todoId) {
+        return commentService.getCommentsByTodoId(todoId);
+    }
+
 }
