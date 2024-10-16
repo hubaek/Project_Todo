@@ -27,21 +27,25 @@ public class TodoService {
         return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
     }
 
+    public TodoResponseDto getTodo(Long todoId) {
+        return new TodoResponseDto(findTodo(todoId));
+    }
+
     @Transactional
-    public Long updateTodo(Long id, TodoRequestDto requestDto) {
-        Todo todo = findTodo(id);
+    public Long updateTodo(Long todoId, TodoRequestDto requestDto) {
+        Todo todo = findTodo(todoId);
         todo.update(requestDto);
-        return id;
+        return todoId;
     }
 
-    public Long deleteTodo(Long id) {
-        Todo todo = findTodo(id);
+    public Long deleteTodo(Long todoId) {
+        Todo todo = findTodo(todoId);
         todoRepository.delete(todo);
-        return id;
+        return todoId;
     }
 
-    private Todo findTodo(Long id) {
-        return todoRepository.findById(id).orElseThrow(() ->
+    private Todo findTodo(Long todoId) {
+        return todoRepository.findById(todoId).orElseThrow(() ->
                 new IllegalArgumentException("선택한 일정이 존재하지 않습니다."));
     }
 

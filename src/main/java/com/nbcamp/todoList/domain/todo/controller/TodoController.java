@@ -26,6 +26,11 @@ public class TodoController {
         return todoService.getTodos();
     }
 
+    @GetMapping("/{todoId}")
+    public TodoResponseDto getTodo(@PathVariable Long todoId) {
+        return todoService.getTodo(todoId);
+    }
+
     @PutMapping("/{todoId}")
     public Long updateTodo(@PathVariable Long todoId, @RequestBody @Valid TodoRequestDto requestDto) {
         return todoService.updateTodo(todoId, requestDto);
