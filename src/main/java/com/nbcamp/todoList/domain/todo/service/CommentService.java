@@ -19,6 +19,8 @@ public class CommentService {
         Todo todo = findTodo(todoId);
         Comment comment = new Comment(commentRequestDto);
 
+        todo.addComment(comment);
+
         Comment savedComment = commentRepository.save(comment);
         return new CommentResponseDto(comment);
     }

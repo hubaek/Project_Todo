@@ -27,6 +27,11 @@ public class Todo extends Timestamped {
     @OneToMany(mappedBy = "todo")
     private List<Comment> comments = new ArrayList<>();
 
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+        comment.setTodo(this);
+    }
+
 
 
     public Todo(TodoRequestDto requestDto) {
