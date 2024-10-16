@@ -34,6 +34,12 @@ public class TodoService {
         return id;
     }
 
+    public Long deleteTodo(Long id) {
+        Todo todo = findTodo(id);
+        todoRepository.delete(todo);
+        return id;
+    }
+
     private Todo findTodo(Long id) {
         return todoRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("선택한 일정이 존재하지 않습니다."));
