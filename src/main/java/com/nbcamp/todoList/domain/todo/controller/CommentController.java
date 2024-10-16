@@ -25,8 +25,13 @@ public class CommentController {
     }
 
     @PutMapping("/{commentId}")
-    public Long updateComment(@PathVariable Long commentId, @PathVariable Long todoId, @RequestBody CommentRequestDto commentRequestDto) {
+    public Long updateComment(@PathVariable Long todoId, @PathVariable Long commentId, @RequestBody CommentRequestDto commentRequestDto) {
         return commentService.updateComment(todoId, commentId, commentRequestDto);
+    }
+
+    @DeleteMapping("/{commentId}")
+    public Long deleteComment(@PathVariable Long todoId, @PathVariable Long commentId) {
+        return commentService.deleteComment(todoId, commentId);
     }
 
 

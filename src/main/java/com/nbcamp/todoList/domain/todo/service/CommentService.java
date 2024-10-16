@@ -43,6 +43,13 @@ public class CommentService {
         return commentId;
     }
 
+    public Long deleteComment(Long todoId, Long commentId) {
+        findTodo(todoId);
+        Comment comment = findComment(commentId);
+        commentRepository.delete(comment);
+        return commentId;
+    }
+
     private Comment findComment(Long commentId) {
         return commentRepository.findById(commentId).orElseThrow(() ->
                 new RuntimeException("Comment not found"));
