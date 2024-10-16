@@ -4,10 +4,9 @@ import com.nbcamp.todo.dto.TodoRequestDto;
 import com.nbcamp.todo.dto.TodoResponseDto;
 import com.nbcamp.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +19,12 @@ public class TodoController {
     public TodoResponseDto createTodo(@RequestBody TodoRequestDto requestDto) {
         return todoService.createTodo(requestDto);
     }
+
+    @GetMapping
+    public List<TodoResponseDto> getTodos() {
+        return todoService.getTodos();
+    }
+
 
 
 }

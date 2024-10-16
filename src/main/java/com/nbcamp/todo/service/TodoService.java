@@ -7,6 +7,8 @@ import com.nbcamp.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TodoService {
@@ -15,11 +17,15 @@ public class TodoService {
 
     public TodoResponseDto createTodo(TodoRequestDto requestDto) {
         Todo todo = new Todo(requestDto);
-
         Todo saveTodo = todoRepository.save(todo);
-
         return new TodoResponseDto(todo);
-
     }
+
+    public List<TodoResponseDto> getTodos() {
+
+        return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
+    }
+
+
 
 }
