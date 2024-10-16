@@ -1,6 +1,6 @@
-package com.nbcamp.todo.dto;
+package com.nbcamp.todoList.domain.todo.dto;
 
-import com.nbcamp.todo.entity.Todo;
+import com.nbcamp.todoList.domain.todo.entity.Todo;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

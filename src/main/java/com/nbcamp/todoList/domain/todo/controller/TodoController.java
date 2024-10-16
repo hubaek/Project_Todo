@@ -1,8 +1,8 @@
-package com.nbcamp.todo.controller;
+package com.nbcamp.todoList.domain.todo.controller;
 
-import com.nbcamp.todo.dto.TodoRequestDto;
-import com.nbcamp.todo.dto.TodoResponseDto;
-import com.nbcamp.todo.service.TodoService;
+import com.nbcamp.todoList.domain.todo.dto.TodoRequestDto;
+import com.nbcamp.todoList.domain.todo.dto.TodoResponseDto;
+import com.nbcamp.todoList.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

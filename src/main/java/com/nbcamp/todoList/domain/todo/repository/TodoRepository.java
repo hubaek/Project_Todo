@@ -1,6 +1,6 @@
-package com.nbcamp.todo.repository;
+package com.nbcamp.todoList.domain.todo.repository;
 
-import com.nbcamp.todo.entity.Todo;
+import com.nbcamp.todoList.domain.todo.entity.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

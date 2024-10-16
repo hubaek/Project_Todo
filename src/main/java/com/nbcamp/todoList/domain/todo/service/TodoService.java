@@ -1,9 +1,9 @@
-package com.nbcamp.todo.service;
+package com.nbcamp.todoList.domain.todo.service;
 
-import com.nbcamp.todo.dto.TodoRequestDto;
-import com.nbcamp.todo.dto.TodoResponseDto;
-import com.nbcamp.todo.entity.Todo;
-import com.nbcamp.todo.repository.TodoRepository;
+import com.nbcamp.todoList.domain.todo.dto.TodoRequestDto;
+import com.nbcamp.todoList.domain.todo.dto.TodoResponseDto;
+import com.nbcamp.todoList.domain.todo.entity.Todo;
+import com.nbcamp.todoList.domain.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

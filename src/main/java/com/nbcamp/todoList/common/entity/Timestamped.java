@@ -1,4 +1,4 @@
-package com.nbcamp.todo.entity;
+package com.nbcamp.todoList.common.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

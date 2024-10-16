@@ -1,9 +1,13 @@
-package com.nbcamp.todo.entity;
+package com.nbcamp.todoList.domain.todo.entity;
 
-import com.nbcamp.todo.dto.TodoRequestDto;
+import com.nbcamp.todoList.common.entity.Timestamped;
+import com.nbcamp.todoList.domain.todo.dto.TodoRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +23,11 @@ public class Todo extends Timestamped {
     private String content;
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "todo")
+    private List<Comment> comments = new ArrayList<>();
+
+
 
     public Todo(TodoRequestDto requestDto) {
         this.title = requestDto.getTitle();

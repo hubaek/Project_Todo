@@ -1,4 +1,4 @@
-package com.nbcamp.todo.dto;
+package com.nbcamp.todoList.domain.todo.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
