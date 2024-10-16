@@ -6,6 +6,7 @@ import com.nbcamp.todo.entity.Todo;
 import com.nbcamp.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,17 @@ public class TodoService {
         return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
     }
 
+    @Transactional
+    public Long updateTodo(Long id, TodoRequestDto requestDto) {
+        Todo todo = findTodo(id);
+        todo.update(requestDto);
+        return id;
+    }
+
+    private Todo findTodo(Long id) {
+        return todoRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("선택한 일정이 존재하지 않습니다."));
+    }
 
 
 }

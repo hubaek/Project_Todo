@@ -25,4 +25,10 @@ public class Todo extends Timestamped {
         this.content = requestDto.getContent();
         this.name = requestDto.getName();
     }
+
+    public void update(TodoRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.name = requestDto.getName();
+    }
 }
