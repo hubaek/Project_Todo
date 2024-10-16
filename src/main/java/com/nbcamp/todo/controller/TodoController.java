@@ -3,6 +3,7 @@ package com.nbcamp.todo.controller;
 import com.nbcamp.todo.dto.TodoRequestDto;
 import com.nbcamp.todo.dto.TodoResponseDto;
 import com.nbcamp.todo.service.TodoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class TodoController {
     private final TodoService todoService;
 
     @PostMapping
-    public TodoResponseDto createTodo(@RequestBody TodoRequestDto requestDto) {
+    public TodoResponseDto createTodo(@RequestBody @Valid TodoRequestDto requestDto) {
         return todoService.createTodo(requestDto);
     }
 
@@ -26,7 +27,7 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public Long updateTodo(@PathVariable Long id, @RequestBody TodoRequestDto requestDto) {
+    public Long updateTodo(@PathVariable Long id, @RequestBody @Valid TodoRequestDto requestDto) {
         return todoService.updateTodo(id, requestDto);
     }
 
