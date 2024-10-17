@@ -22,8 +22,9 @@ public class TodoController {
     }
 
     @GetMapping
-    public List<TodoResponseDto> getTodos() {
-        return todoService.getTodos();
+    public List<TodoResponseDto> getTodos(@RequestParam(defaultValue = "0") int page,
+                                          @RequestParam(defaultValue = "10") int size) {
+        return todoService.getTodos(page, size);
     }
 
     @GetMapping("/{todoId}")

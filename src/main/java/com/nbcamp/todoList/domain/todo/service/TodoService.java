@@ -5,6 +5,10 @@ import com.nbcamp.todoList.domain.todo.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
 import com.nbcamp.todoList.domain.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +26,15 @@ public class TodoService {
         return new TodoResponseDto(todo);
     }
 
-    public List<TodoResponseDto> getTodos() {
+//    public List<TodoResponseDto> getTodos() {
+//        return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
+//    }
 
-        return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
+    @Transactional(readOnly = true)
+    public List<TodoResponseDto> getTodos(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt"));
+        Page<Todo> todos = todoRepository.findAll(pageable);
+        return todoRepository.findAll(pageable).stream().map(TodoResponseDto::new).toList();
     }
 
     public TodoResponseDto getTodo(Long todoId) {
