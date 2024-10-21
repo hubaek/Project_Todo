@@ -20,6 +20,7 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
+    // create Todo 함
     public TodoResponseDto createTodo(TodoRequestDto requestDto) {
         Todo todo = new Todo(requestDto);
         Todo saveTodo = todoRepository.save(todo);
