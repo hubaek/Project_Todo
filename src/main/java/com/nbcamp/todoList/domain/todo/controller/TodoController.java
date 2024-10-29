@@ -1,7 +1,7 @@
 package com.nbcamp.todoList.domain.todo.controller;
 
-import com.nbcamp.todoList.domain.todo.dto.TodoRequestDto;
-import com.nbcamp.todoList.domain.todo.dto.TodoResponseDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

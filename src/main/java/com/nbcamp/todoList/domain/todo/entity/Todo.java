@@ -1,7 +1,7 @@
 package com.nbcamp.todoList.domain.todo.entity;
 
 import com.nbcamp.todoList.common.entity.Timestamped;
-import com.nbcamp.todoList.domain.todo.dto.TodoRequestDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

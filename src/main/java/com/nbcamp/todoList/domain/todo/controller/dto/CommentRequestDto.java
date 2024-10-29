@@ -1,4 +1,4 @@
-package com.nbcamp.todoList.domain.todo.dto;
+package com.nbcamp.todoList.domain.todo.controller.dto;
 
 import lombok.Getter;
 

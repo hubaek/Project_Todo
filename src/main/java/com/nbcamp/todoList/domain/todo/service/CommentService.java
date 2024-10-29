@@ -1,7 +1,7 @@
 package com.nbcamp.todoList.domain.todo.service;
 
-import com.nbcamp.todoList.domain.todo.dto.CommentRequestDto;
-import com.nbcamp.todoList.domain.todo.dto.CommentResponseDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.CommentRequestDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.CommentResponseDto;
 import com.nbcamp.todoList.domain.todo.entity.Comment;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
 import com.nbcamp.todoList.domain.todo.repository.CommentRepository;
