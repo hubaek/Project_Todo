@@ -16,4 +16,9 @@ public class MemberService {
         Member member = new Member(request.getName());
         return memberRepository.save(member);
     }
+
+    public Member getMemberById(Long memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("멤버가 없습니다!"));
+    }
 }
