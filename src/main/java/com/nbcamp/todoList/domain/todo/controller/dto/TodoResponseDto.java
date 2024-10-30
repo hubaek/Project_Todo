@@ -2,6 +2,7 @@ package com.nbcamp.todoList.domain.todo.controller.dto;
 
 import com.nbcamp.todoList.domain.todo.entity.Todo;
 import lombok.Getter;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +12,7 @@ public class TodoResponseDto {
     private String title;
     private String content;
     private int commentCount;
-    private String name;
+    private Long memberId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -20,7 +21,7 @@ public class TodoResponseDto {
         this.id = todo.getId();
         this.title = todo.getTitle();
         this.content = todo.getContent();
-        this.name = todo.getName();
+        this.memberId = todo.getMemberId();
         this.createdAt = todo.getCreatedAt();
         this.updatedAt = todo.getUpdatedAt();
         this.commentCount = todo.getComments().size();
