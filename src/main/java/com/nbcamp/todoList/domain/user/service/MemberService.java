@@ -1,10 +1,10 @@
-package com.nbcamp.todoList.domain.todo.service;
+package com.nbcamp.todoList.domain.user.service;
 
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberRegisterRequest;
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberResponse;
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberUpdateRequest;
-import com.nbcamp.todoList.domain.todo.entity.Member;
-import com.nbcamp.todoList.domain.todo.repository.MemberRepository;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberRegisterRequest;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberResponse;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberUpdateRequest;
+import com.nbcamp.todoList.domain.user.entity.Member;
+import com.nbcamp.todoList.domain.user.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

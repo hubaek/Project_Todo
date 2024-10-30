@@ -1,6 +1,6 @@
-package com.nbcamp.todoList.domain.todo.controller.dto;
+package com.nbcamp.todoList.domain.user.controller.dto;
 
-import com.nbcamp.todoList.domain.todo.entity.Member;
+import com.nbcamp.todoList.domain.user.entity.Member;
 import lombok.Getter;
 
 @Getter

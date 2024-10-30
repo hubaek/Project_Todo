@@ -1,4 +1,4 @@
-package com.nbcamp.todoList.domain.todo.entity;
+package com.nbcamp.todoList.domain.user.entity;
 
 import com.nbcamp.todoList.common.entity.Timestamped;
 import jakarta.persistence.Entity;

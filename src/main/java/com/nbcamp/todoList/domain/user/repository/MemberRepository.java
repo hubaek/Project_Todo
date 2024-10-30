@@ -1,6 +1,6 @@
-package com.nbcamp.todoList.domain.todo.repository;
+package com.nbcamp.todoList.domain.user.repository;
 
-import com.nbcamp.todoList.domain.todo.entity.Member;
+import com.nbcamp.todoList.domain.user.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {

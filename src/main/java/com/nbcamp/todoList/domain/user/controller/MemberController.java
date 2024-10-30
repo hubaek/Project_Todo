@@ -1,10 +1,9 @@
-package com.nbcamp.todoList.domain.todo.controller;
+package com.nbcamp.todoList.domain.user.controller;
 
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberRegisterRequest;
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberResponse;
-import com.nbcamp.todoList.domain.todo.controller.dto.MemberUpdateRequest;
-import com.nbcamp.todoList.domain.todo.entity.Member;
-import com.nbcamp.todoList.domain.todo.service.MemberService;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberRegisterRequest;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberResponse;
+import com.nbcamp.todoList.domain.user.controller.dto.MemberUpdateRequest;
+import com.nbcamp.todoList.domain.user.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
