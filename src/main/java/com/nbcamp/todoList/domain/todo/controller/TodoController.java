@@ -30,9 +30,12 @@ public class TodoController {
     }
 
     @GetMapping
-    public Page<TodoResponseDto> getTodos(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<Page<TodoResponseDto>> getTodos(@RequestParam(defaultValue = "0") int page,
                                           @RequestParam(defaultValue = "10") int size) {
-        return todoService.getTodos(page, size);
+        Page<TodoResponseDto> todoResponseDto = todoService.getTodos(page, size);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(todoResponseDto);
     }
 
     @GetMapping("/{todoId}")
