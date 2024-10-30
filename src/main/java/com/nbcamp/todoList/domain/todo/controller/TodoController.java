@@ -1,10 +1,13 @@
 package com.nbcamp.todoList.domain.todo.controller;
 
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +21,11 @@ public class TodoController {
 
     // commit test
     @PostMapping
-    public TodoResponseDto createTodo(@RequestBody @Valid TodoRequestDto requestDto) {
-        return todoService.createTodo(requestDto);
+    public ResponseEntity<TodoResponseDto> createTodo(@RequestBody @Valid TodoCreateRequest createRequest) {
+        TodoResponseDto todoResponseDto = todoService.createTodo(createRequest);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(todoResponseDto);
     }
 
     @GetMapping

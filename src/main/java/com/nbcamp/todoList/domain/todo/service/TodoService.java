@@ -1,5 +1,6 @@
 package com.nbcamp.todoList.domain.todo.service;
 
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
@@ -20,10 +21,9 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    // create Todo 함
-    public TodoResponseDto createTodo(TodoRequestDto requestDto) {
-        Todo todo = new Todo(requestDto);
-        Todo saveTodo = todoRepository.save(todo);
+    public TodoResponseDto createTodo(TodoCreateRequest createRequest) {
+        Todo todo = new Todo(createRequest);
+        todoRepository.save(todo);
         return new TodoResponseDto(todo);
     }
 

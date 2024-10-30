@@ -1,6 +1,7 @@
 package com.nbcamp.todoList.domain.todo.entity;
 
 import com.nbcamp.todoList.common.entity.Timestamped;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -21,8 +22,8 @@ public class Todo extends Timestamped {
     private String title;
     @Column(name = "content", nullable = false)
     private String content;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "member_id")
+    private Long memberId;
 
     @OneToMany(mappedBy = "todo", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
@@ -34,15 +35,13 @@ public class Todo extends Timestamped {
 
 
 
-    public Todo(TodoRequestDto requestDto) {
-        this.title = requestDto.getTitle();
-        this.content = requestDto.getContent();
-        this.name = requestDto.getName();
+    public Todo(TodoCreateRequest createRequest) {
+        this.title = createRequest.getTitle();
+        this.content = createRequest.getContent();
     }
 
     public void update(TodoRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
-        this.name = requestDto.getName();
     }
 }
