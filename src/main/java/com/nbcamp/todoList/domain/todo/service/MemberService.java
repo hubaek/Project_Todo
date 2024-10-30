@@ -14,14 +14,15 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public Member registerMember(MemberRegisterRequest request) {
+    public MemberResponse registerMember(MemberRegisterRequest request) {
         Member member = new Member(request.getName(), request.getEmail());
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        return new MemberResponse(member);
     }
 
-    public Member getMemberById(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("멤버가 없습니다!"));
+    public MemberResponse getMemberById(Long memberId) {
+        Member member = getMember(memberId);
+        return new MemberResponse(member);
     }
 
     public MemberResponse updateMember(Long memberId, MemberUpdateRequest updateRequest) {
@@ -31,14 +32,14 @@ public class MemberService {
         return new MemberResponse(member);
     }
 
-    private Member getMember(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(() -> new IllegalArgumentException("멤버가 없습니다."));
-    }
-
     public MemberResponse deleteMember(Long memberId) {
         Member member = getMember(memberId);
         memberRepository.delete(member);
         return new MemberResponse(member);
+    }
+
+    private Member getMember(Long memberId) {
+        return memberRepository.findById(memberId)
+                .orElseThrow(() -> new IllegalArgumentException("멤버가 없습니다."));
     }
 }

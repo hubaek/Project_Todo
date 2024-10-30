@@ -18,14 +18,19 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping()
-    public Member registerMember(@RequestBody MemberRegisterRequest request) {
-
-        return memberService.registerMember(request);
+    public ResponseEntity<MemberResponse> registerMember(@RequestBody MemberRegisterRequest request) {
+        MemberResponse memberResponse = memberService.registerMember(request);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(memberResponse);
     }
 
     @GetMapping("/{memberId}")
-    public Member getMemberById(@PathVariable Long memberId) {
-        return memberService.getMemberById(memberId);
+    public ResponseEntity<MemberResponse> getMemberById(@PathVariable Long memberId) {
+        MemberResponse memberResponse = memberService.getMemberById(memberId);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(memberResponse);
     }
 
     @PutMapping("/{memberId}")
