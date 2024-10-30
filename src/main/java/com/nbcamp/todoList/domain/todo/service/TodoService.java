@@ -39,7 +39,8 @@ public class TodoService {
     }
 
     public TodoResponseDto getTodo(Long todoId) {
-        return new TodoResponseDto(findTodo(todoId));
+        Todo todo = findTodo(todoId);
+        return new TodoResponseDto(todo);
     }
 
     @Transactional
