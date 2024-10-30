@@ -1,7 +1,6 @@
 package com.nbcamp.todoList.domain.todo.controller;
 
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
-import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import com.nbcamp.todoList.domain.todo.service.TodoService;
@@ -11,8 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

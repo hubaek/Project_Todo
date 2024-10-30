@@ -1,7 +1,6 @@
 package com.nbcamp.todoList.domain.todo.service;
 
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
-import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
@@ -13,8 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
