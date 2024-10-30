@@ -25,7 +25,8 @@ public class Member extends Timestamped {
         this.name = name;
     }
 
-    public Member(String name) {
+    public Member(String name, String email) {
         this.name = name;
+        this.email = email;
     }
 }
