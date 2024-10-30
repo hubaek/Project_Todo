@@ -6,6 +6,7 @@ import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class TodoController {
     }
 
     @GetMapping
-    public List<TodoResponseDto> getTodos(@RequestParam(defaultValue = "0") int page,
+    public Page<TodoResponseDto> getTodos(@RequestParam(defaultValue = "0") int page,
                                           @RequestParam(defaultValue = "10") int size) {
         return todoService.getTodos(page, size);
     }

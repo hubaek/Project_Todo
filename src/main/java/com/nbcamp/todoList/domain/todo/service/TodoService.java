@@ -32,10 +32,10 @@ public class TodoService {
 //    }
 
     @Transactional(readOnly = true)
-    public List<TodoResponseDto> getTodos(int page, int size) {
+    public Page<TodoResponseDto> getTodos(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt"));
         Page<Todo> todos = todoRepository.findAll(pageable);
-        return todoRepository.findAll(pageable).stream().map(TodoResponseDto::new).toList();
+        return todos.map(TodoResponseDto::new);
     }
 
     public TodoResponseDto getTodo(Long todoId) {
