@@ -3,6 +3,7 @@ package com.nbcamp.todoList.domain.todo.service;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
 import com.nbcamp.todoList.domain.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -44,16 +45,17 @@ public class TodoService {
     }
 
     @Transactional
-    public Long updateTodo(Long todoId, TodoRequestDto requestDto) {
+    public TodoResponseDto updateTodo(Long todoId, TodoUpdateRequest updateRequest) {
         Todo todo = findTodo(todoId);
-        todo.update(requestDto);
-        return todoId;
+        todo.update(updateRequest);
+        todoRepository.save(todo);
+        return new TodoResponseDto(todo);
     }
 
-    public Long deleteTodo(Long todoId) {
+    public TodoResponseDto deleteTodo(Long todoId) {
         Todo todo = findTodo(todoId);
         todoRepository.delete(todo);
-        return todoId;
+        return new TodoResponseDto(todo);
     }
 
     private Todo findTodo(Long todoId) {

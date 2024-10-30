@@ -3,6 +3,7 @@ package com.nbcamp.todoList.domain.todo.entity;
 import com.nbcamp.todoList.common.entity.Timestamped;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,8 +41,8 @@ public class Todo extends Timestamped {
         this.content = createRequest.getContent();
     }
 
-    public void update(TodoRequestDto requestDto) {
-        this.title = requestDto.getTitle();
-        this.content = requestDto.getContent();
+    public void update(TodoUpdateRequest updateRequest) {
+        this.title = updateRequest.getTitle();
+        this.content = updateRequest.getContent();
     }
 }

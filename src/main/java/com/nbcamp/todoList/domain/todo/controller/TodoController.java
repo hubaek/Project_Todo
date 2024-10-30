@@ -3,6 +3,7 @@ package com.nbcamp.todoList.domain.todo.controller;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoRequestDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
+import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import com.nbcamp.todoList.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,18 +40,27 @@ public class TodoController {
     }
 
     @GetMapping("/{todoId}")
-    public TodoResponseDto getTodo(@PathVariable Long todoId) {
-        return todoService.getTodo(todoId);
+    public ResponseEntity<TodoResponseDto> getTodo(@PathVariable Long todoId) {
+        TodoResponseDto todoResponseDto = todoService.getTodo(todoId);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(todoResponseDto);
     }
 
     @PutMapping("/{todoId}")
-    public Long updateTodo(@PathVariable Long todoId, @RequestBody @Valid TodoRequestDto requestDto) {
-        return todoService.updateTodo(todoId, requestDto);
+    public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long todoId, @RequestBody @Valid TodoUpdateRequest updateRequest) {
+        TodoResponseDto todoResponseDto = todoService.updateTodo(todoId, updateRequest);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(todoResponseDto);
     }
 
     @DeleteMapping("/{todoId}")
-    public Long deleteTodo(@PathVariable Long todoId) {
-        return todoService.deleteTodo(todoId);
+    public ResponseEntity<TodoResponseDto> deleteTodo(@PathVariable Long todoId) {
+        TodoResponseDto todoResponseDto = todoService.deleteTodo(todoId);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(todoResponseDto);
     }
 
 
