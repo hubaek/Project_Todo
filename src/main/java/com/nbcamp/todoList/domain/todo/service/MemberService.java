@@ -36,4 +36,9 @@ public class MemberService {
                 .orElseThrow(() -> new IllegalArgumentException("멤버가 없습니다."));
     }
 
+    public MemberResponse deleteMember(Long memberId) {
+        Member member = getMember(memberId);
+        memberRepository.delete(member);
+        return new MemberResponse(member);
+    }
 }
