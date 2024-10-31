@@ -4,6 +4,7 @@ import com.nbcamp.todoList.domain.user.controller.dto.*;
 import com.nbcamp.todoList.domain.user.entity.Member;
 import com.nbcamp.todoList.domain.user.entity.UserRoleEnum;
 import com.nbcamp.todoList.domain.user.repository.MemberRepository;
+import com.nbcamp.todoList.exception.MemberAlreadyExistsException;
 import com.nbcamp.todoList.jwt.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -55,7 +56,7 @@ public class MemberService {
         String name = signupRequest.getName();
         Optional<Member> checkUsername = memberRepository.findByName(name);
         if (checkUsername.isPresent()) {
-            throw new IllegalArgumentException("중복된 사용자가 존재합니다.");
+            throw new MemberAlreadyExistsException();
         }
 
         String email = signupRequest.getEmail();
