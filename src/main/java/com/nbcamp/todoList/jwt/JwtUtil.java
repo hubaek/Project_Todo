@@ -52,6 +52,8 @@ public class JwtUtil {
 
         return BEARER_PREFIX +
                 Jwts.builder()
+                        // TODO
+                        //  해당 사용자의 ID(PK)로 설정하는게 일반적
                         .setSubject(email) // 사용자 식별자값(ID)
                         .claim(AUTHORIZATION_KEY, role) // 사용자 권한
                         .setExpiration(new Date(date.getTime() + TOKEN_TIME)) // 만료 시간
@@ -59,7 +61,8 @@ public class JwtUtil {
                         .signWith(key, signatureAlgorithm) // 암호화 알고리즘
                         .compact();
     }
-
+    // todo
+    //  HttpServletResponse, request 핸들링은 Filter & Controller에서 처리하는 게 좋다
     // JWT Cookie 에 저장
     public void addJwtToCookie(String token, HttpServletResponse res) {
         try {

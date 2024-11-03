@@ -56,7 +56,7 @@ public class TodoController {
     public ResponseEntity<TodoResponseDto> deleteTodo(@PathVariable Long todoId) {
         TodoResponseDto todoResponseDto = todoService.deleteTodo(todoId);
         return ResponseEntity
-                .status(HttpStatus.OK)
+                .status(HttpStatus.NO_CONTENT)
                 .body(todoResponseDto);
     }
 
