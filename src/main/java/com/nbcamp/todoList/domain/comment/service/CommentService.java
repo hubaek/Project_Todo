@@ -1,10 +1,10 @@
-package com.nbcamp.todoList.domain.todo.service;
+package com.nbcamp.todoList.domain.comment.service;
 
-import com.nbcamp.todoList.domain.todo.controller.dto.CommentRequestDto;
-import com.nbcamp.todoList.domain.todo.controller.dto.CommentResponseDto;
-import com.nbcamp.todoList.domain.todo.entity.Comment;
+import com.nbcamp.todoList.domain.comment.controller.dto.CommentRequestDto;
+import com.nbcamp.todoList.domain.comment.controller.dto.CommentResponseDto;
+import com.nbcamp.todoList.domain.comment.entity.Comment;
 import com.nbcamp.todoList.domain.todo.entity.Todo;
-import com.nbcamp.todoList.domain.todo.repository.CommentRepository;
+import com.nbcamp.todoList.domain.comment.repository.CommentRepository;
 import com.nbcamp.todoList.domain.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

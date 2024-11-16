@@ -1,6 +1,7 @@
 package com.nbcamp.todoList.domain.todo.entity;
 
 import com.nbcamp.todoList.common.entity.Timestamped;
+import com.nbcamp.todoList.domain.comment.entity.Comment;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
 import jakarta.persistence.*;

@@ -1,8 +1,8 @@
-package com.nbcamp.todoList.domain.todo.controller;
+package com.nbcamp.todoList.domain.comment.controller;
 
-import com.nbcamp.todoList.domain.todo.controller.dto.CommentRequestDto;
-import com.nbcamp.todoList.domain.todo.controller.dto.CommentResponseDto;
-import com.nbcamp.todoList.domain.todo.service.CommentService;
+import com.nbcamp.todoList.domain.comment.controller.dto.CommentRequestDto;
+import com.nbcamp.todoList.domain.comment.controller.dto.CommentResponseDto;
+import com.nbcamp.todoList.domain.comment.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

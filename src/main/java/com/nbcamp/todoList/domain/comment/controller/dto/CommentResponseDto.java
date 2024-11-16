@@ -1,6 +1,6 @@
-package com.nbcamp.todoList.domain.todo.controller.dto;
+package com.nbcamp.todoList.domain.comment.controller.dto;
 
-import com.nbcamp.todoList.domain.todo.entity.Comment;
+import com.nbcamp.todoList.domain.comment.entity.Comment;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
