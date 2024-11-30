@@ -35,7 +35,7 @@ public class Todo extends Timestamped {
     }
 
 
-
+    //todo create 로직을 Entity가 아닌 dto? 생각하기
     public Todo(TodoCreateRequest createRequest) {
         this.title = createRequest.getTitle();
         this.content = createRequest.getContent();
