@@ -2,7 +2,6 @@ package com.nbcamp.todoList.domain.todo.controller.dto;
 
 import com.nbcamp.todoList.domain.todo.entity.Todo;
 import lombok.Getter;
-import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 
@@ -26,4 +25,5 @@ public class TodoResponseDto {
         this.updatedAt = todo.getUpdatedAt();
         this.commentCount = todo.getComments().size();
     }
+
 }

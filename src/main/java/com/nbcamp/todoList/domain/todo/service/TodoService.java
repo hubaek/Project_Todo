@@ -20,9 +20,9 @@ public class TodoService {
     private final TodoRepository todoRepository;
 
     public TodoResponseDto createTodo(TodoCreateRequest createRequest) {
-        Todo todo = new Todo(createRequest);
-        todoRepository.save(todo);
-        return new TodoResponseDto(todo);
+        Todo todo = new Todo(createRequest.getTitle(), createRequest.getContent());
+        Todo savedTodo = todoRepository.save(todo);
+        return new TodoResponseDto(savedTodo);
     }
 
 //    public List<TodoResponseDto> getTodos() {
