@@ -35,10 +35,10 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login (@RequestBody LoginRequest loginRequest, HttpServletResponse res) {
         LoginResponse loginResponse = memberService.login(loginRequest, res);
 
-        jwtUtil.addJwtToCookie(loginResponse.getToken(), res);
-        LoginResponse responseBody = new LoginResponse(null, loginResponse.getId(), loginResponse.getEmail(), loginResponse.getRole());
 
-        return ResponseEntity.ok(responseBody);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(loginResponse);
     }
 
 }
