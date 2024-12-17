@@ -19,17 +19,13 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    public TodoResponseDto createTodo(TodoCreateRequest createRequest) {
-        Todo todo = new Todo(createRequest.getTitle(), createRequest.getContent());
+    @Transactional
+    public TodoResponseDto createTodo(TodoCreateRequest createRequest, Long memberId) {
+        Todo todo = new Todo(createRequest.getTitle(), createRequest.getContent(), memberId);
         Todo savedTodo = todoRepository.save(todo);
         return new TodoResponseDto(savedTodo);
     }
 
-//    public List<TodoResponseDto> getTodos() {
-//        return todoRepository.findAllByOrderByUpdatedAtDesc().stream().map(TodoResponseDto::new).toList();
-//    }
-
-    @Transactional(readOnly = true)
     public Page<TodoResponseDto> getTodos(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt"));
         Page<Todo> todos = todoRepository.findAll(pageable);
@@ -42,16 +38,20 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoResponseDto updateTodo(Long todoId, TodoUpdateRequest updateRequest) {
+    public TodoResponseDto updateTodo(Long todoId, TodoUpdateRequest updateRequest, Long memberId) {
         Todo todo = findTodo(todoId);
-        todo.update(updateRequest);
-        todoRepository.save(todo);
-        return new TodoResponseDto(todo);
+        if (todo.getId().equals(memberId)) {
+            todo.update(updateRequest);
+        }
+        Todo updatedTodo = todoRepository.save(todo);
+        return new TodoResponseDto(updatedTodo);
     }
 
-    public TodoResponseDto deleteTodo(Long todoId) {
+    public TodoResponseDto deleteTodo(Long todoId, Long memberId) {
         Todo todo = findTodo(todoId);
-        todoRepository.delete(todo);
+        if (todo.getId().equals(memberId)) {
+            todoRepository.delete(todo);
+        }
         return new TodoResponseDto(todo);
     }
 
