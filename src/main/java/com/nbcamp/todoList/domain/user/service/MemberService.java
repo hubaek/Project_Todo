@@ -2,7 +2,7 @@ package com.nbcamp.todoList.domain.user.service;
 
 import com.nbcamp.todoList.domain.user.controller.dto.*;
 import com.nbcamp.todoList.domain.user.entity.Member;
-import com.nbcamp.todoList.domain.user.entity.UserRoleEnum;
+import com.nbcamp.todoList.domain.user.entity.UserRole;
 import com.nbcamp.todoList.domain.user.repository.MemberRepository;
 import com.nbcamp.todoList.exception.MemberAlreadyExistsException;
 import com.nbcamp.todoList.jwt.JwtUtil;
@@ -66,12 +66,12 @@ public class MemberService {
         }
 
         // 사용자 ROLE 확인
-        UserRoleEnum role = UserRoleEnum.USER;
+        UserRole role = UserRole.USER;
         if (signupRequest.isAdmin()) {
             if (!ADMIN_TOKEN.equals(signupRequest.getAdminToken())) {
                 throw new IllegalArgumentException("관리자 암호가 틀려 등록이 불가능합니다.");
             }
-            role = UserRoleEnum.ADMIN;
+            role = UserRole.ADMIN;
         }
 
         String password = passwordEncoder.encode(signupRequest.getPassword());
@@ -90,7 +90,8 @@ public class MemberService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        String token = jwtUtil.createToken(member.getEmail(), member.getRole());
+        String token = jwtUtil.createToken(member.getId(), member.getRole(), member.getName(), member.getEmail());
+        res.setHeader("Authorization", token);
 
         return new LoginResponse(token, member.getId(), member.getEmail(), member.getRole());
     }
