@@ -1,9 +1,7 @@
 package com.nbcamp.todoList.jwt;
 
-import com.nbcamp.todoList.domain.user.entity.UserRoleEnum;
+import com.nbcamp.todoList.domain.user.entity.UserRole;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
@@ -40,7 +38,7 @@ public class JwtUtil {
     }
 
     // 토큰 생성
-    public String createToken(Long memberId, UserRoleEnum userRole, String name, String email) {
+    public String createToken(Long memberId, UserRole userRole, String name, String email) {
         Date now = new Date();
 
         return BEARER_PREFIX + Jwts.builder()
@@ -62,25 +60,12 @@ public class JwtUtil {
         throw new NullPointerException("Not Found Token");
     }
 
-    public Jws<Claims> validateToken(String token) {
-        try {
+    public Claims extractClaims(String token) {
             return Jwts.parserBuilder()
                     .setSigningKey(key)
                     .build()
-                    .parseClaimsJws(token);
-
-        } catch (JwtException e) {
-            logger.error("토큰 검증 실패: {}", e.getMessage());
-            throw new JwtException("유효하지 않은 JWT 토큰", e);
-        }
-    }
-
-//    public Claims getClaimsFromToken(String token) {
-//        return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-//    }
-
-    public Claims getClaimsFromToken(String token) {
-        return validateToken(substringToken(token)).getBody();
+                    .parseClaimsJws(token)
+                    .getBody();
     }
 
 
