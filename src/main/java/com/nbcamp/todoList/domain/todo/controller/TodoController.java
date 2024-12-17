@@ -1,5 +1,7 @@
 package com.nbcamp.todoList.domain.todo.controller;
 
+import com.nbcamp.todoList.common.annotation.Auth;
+import com.nbcamp.todoList.common.dto.AuthMember;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoCreateRequest;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoResponseDto;
 import com.nbcamp.todoList.domain.todo.controller.dto.TodoUpdateRequest;
@@ -18,10 +20,9 @@ public class TodoController {
 
     private final TodoService todoService;
 
-    // commit test
     @PostMapping
-    public ResponseEntity<TodoResponseDto> createTodo(@RequestBody @Valid TodoCreateRequest createRequest) {
-        TodoResponseDto todoResponseDto = todoService.createTodo(createRequest);
+    public ResponseEntity<TodoResponseDto> createTodo(@RequestBody @Valid TodoCreateRequest createRequest, @Auth AuthMember authMember) {
+        TodoResponseDto todoResponseDto = todoService.createTodo(createRequest, authMember.getId());
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(todoResponseDto);
@@ -45,16 +46,16 @@ public class TodoController {
     }
 
     @PutMapping("/{todoId}")
-    public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long todoId, @RequestBody @Valid TodoUpdateRequest updateRequest) {
-        TodoResponseDto todoResponseDto = todoService.updateTodo(todoId, updateRequest);
+    public ResponseEntity<TodoResponseDto> updateTodo(@PathVariable Long todoId, @RequestBody @Valid TodoUpdateRequest updateRequest, @Auth AuthMember authMember) {
+        TodoResponseDto todoResponseDto = todoService.updateTodo(todoId, updateRequest, authMember.getId());
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(todoResponseDto);
     }
 
     @DeleteMapping("/{todoId}")
-    public ResponseEntity<TodoResponseDto> deleteTodo(@PathVariable Long todoId) {
-        TodoResponseDto todoResponseDto = todoService.deleteTodo(todoId);
+    public ResponseEntity<TodoResponseDto> deleteTodo(@PathVariable Long todoId, @Auth AuthMember authMember) {
+        TodoResponseDto todoResponseDto = todoService.deleteTodo(todoId, authMember.getId());
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
                 .body(todoResponseDto);
