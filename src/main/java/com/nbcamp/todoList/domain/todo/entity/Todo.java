@@ -25,6 +25,7 @@ public class Todo extends Timestamped {
     @Column(name = "member_id")
     private Long memberId;
 
+    // todo 양방향 연관관계 해제 고려
     @OneToMany(mappedBy = "todo", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
 
@@ -33,6 +34,7 @@ public class Todo extends Timestamped {
         comment.setTodo(this);
     }
 
+    // todo 정적팩토리 메서드 고려
     public Todo(String title, String content, Long memberId) {
         this.title = title;
         this.content = content;
