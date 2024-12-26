@@ -21,6 +21,7 @@ public class Comment extends Timestamped {
     @Column(name = "name")
     private String name;
 
+    // todo id값으로 받을것인가?
     @ManyToOne
     @JoinColumn(name = "todo_id")
     @Setter

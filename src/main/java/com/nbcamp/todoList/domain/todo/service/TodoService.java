@@ -26,6 +26,7 @@ public class TodoService {
         return new TodoResponseDto(savedTodo);
     }
 
+    // todo page객체대신 타입 만들기
     public Page<TodoResponseDto> getTodos(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("updatedAt"));
         Page<Todo> todos = todoRepository.findAll(pageable);
