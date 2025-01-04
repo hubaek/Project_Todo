@@ -1,0 +1,41 @@
+
+services: # 컨테이너
+
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo
+    container_name: todo-springboot-app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+
+    depends_on: # db가 먼저 실행되도록 설정
+      - mysql-db #spring-boot-app
+#    restart: always
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-container2
+    restart: always
+    environment:
+      MYSQL_DATABASE: todo
+      MYSQL_ROOT_PASSWORD: 12341234
+
+    ports:
+      - "3306:3306"
+
+#    command:
+#      - --init-file /docker-entrypoint-initdb.d/init.sql
+
+#    volumes:
+#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+#    healthcheck:
+#      test: ["CMD", "mysqladmin", "ping"]
+#      interval: 5s
+#      retries: 5
+
+
