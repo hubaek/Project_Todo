@@ -11,4 +11,5 @@ public class SignupRequest {
     private String password;
     private boolean admin = false;
     private String adminToken = "";
+    // todo adminToken 바꾸기
 }
